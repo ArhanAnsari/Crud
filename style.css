@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+   
+}
+body{
+    background-color: #4c0bce;
+}
+.table-responsive {
+
+    margin: 20px 0;
+    background-color: white;
+    border-radius: 10PX;
+    padding: 10PX;
+    text-transform: capitalize;
+    
+}
+
+.table,tbody{
+    color:#4c0bce;
+
+}
+th {
+    white-space: nowrap;
+    font-size: 20PX;
+}
+.table tr:hover{
+    background-color: rgb(230, 229, 229);
+    /* color: white; */
+
+}
+.title{
+    color: white;
+}
+.formbox{
+    border-radius: 10PX;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width:30%;
+}
+.form-label{
+    color: #4c0bce;
+}
+.form-control{
+    border: 0;
+    padding: 0.10rem 0.30rem;
+    border-bottom: 1px solid lightgrey;
+}
+.form-control:focus{
+    outline: none;
+    box-shadow: 0;
+}
+.formbox h1{
+    text-transform: uppercase;
+    font-size: 35px;
+}
+#submit{
+    background-color: #4c0bce;
+    color: white;
+}
+#submit:hover{
+    background-color: #611bee;
+}
+.edit,.delete,.save{
+    font-size: 20px;
+    border: 0;
+    background-color: transparent;
+}
+.edit{
+    color: rgb(144, 92, 23) ;
+    
+}
+.delete{
+    color: red;
+    }
+.save{
+    color: rgb(5,151,5)
+}
+@media(max-width:900px){
+    .formbox{
+        width: 50%;
+    }
+}

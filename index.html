@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Detail Form</title>
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</style>
+</head>
+<body>
+    <div class="container formbox p-4 mt-5">
+        <h1 class="mb-4 mt-2">User Detail Form</h1>
+        <form>
+            <div class="mb-3">
+                <label for="fullname" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" min="18" placeholder="">
+            </div>
+           
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="phone" placeholder="">
+            </div>
+            <button type="submit" class="btn" id="submit">Submit</button>
+        </form>
+    </div>
+    
+    <!-- data table  -->
+    <div class="container mt-4">
+        <h2 class="text-center title">Data Table</h2>
+        <div class="table-responsive">
+            <table class="table p-4 ">
+                <thead>
+                    <tr>
+                        <th>SNo.</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                    <!-- Add more table rows here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let rowcount=0;
+        // add new row to the table
+        document.querySelector("#submit").addEventListener("click",(e)=>{
+            e.preventDefault();
+            let name = document.getElementById('name').value;
+            let age = document.getElementById('age').value;
+            let phone = document.getElementById('phone').value;
+            if(name == "" || age == "" || phone == "") {
+                alert("All fields are required");
+                } else {
+                    rowcount++;
+                    const tbody=document.querySelector('tbody');
+                    let tr=document.createElement('tr');
+                    let td1=document.createElement('td');
+                    let td2=document.createElement('td');
+                    let td3=document.createElement('td');
+                    let td4=document.createElement('td');
+                    let td5=document.createElement('td');
+                    td1.innerText=rowcount;
+                    td2.innerText=name;
+                    td3.innerText=age;
+                    td4.innerText=phone;
+                    td5.innerHTML=`<button class="edit"><i class="fa-solid fa-pen-to-square fa-lg"></i></button> 
+                    <button class="save mx-2"><i class="fa-solid fa-file-circle-check fa-lg"></i></button> 
+                    <button class="delete"><i class="fa-solid fa-trash-can fa-lg"></i></button>`
+
+                    // APPEND ALL TD TO ROW
+                tr.appendChild(td1)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+                tbody.append(tr)
+
+                // action buttons functions 
+
+                let editbtn=document.querySelectorAll(".edit");
+                let savebtn=document.querySelectorAll(".save");
+                let deletebtn=document.querySelectorAll(".delete");
+                   
+                  for(let k=0;k<editbtn.length;k++){
+                    console.log(editbtn[k])
+                    // EDIT BUTTON
+                editbtn[k].onclick=function(){
+                   let parent= this.parentElement.parentElement
+                   parent.style.border="2px solid black";
+                   parent.contentEditable=true;
+                
+                }
+                // SAVE BUTTON
+                savebtn[k].onclick=function(){
+                    let parent= this.parentElement.parentElement
+                    parent.style.border="";
+                    parent.contentEditable=false;
+                    
+                    }
+                    // DELETE BUTTON
+                    deletebtn[k].onclick=function(){
+                        let parent= this.parentElement.parentElement
+                        parent.remove()
+                        }
+                    }
+
+            }
+
+        })
+    </script>
+    </body>
+    </html>
